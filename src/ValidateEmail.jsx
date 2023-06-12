@@ -9,9 +9,13 @@ const ValidateEmail = () => {
     const [data, setData] = useState(null)
     useEffect(()=>{
         if(token){
-            axios.post("http://localhost:8000/users/email-validate", { token })
-                .then(resp=>setData(resp.data))
-                .catch(error=>setData(error.data))
+            axios
+              .post(
+                "https://ecommerceapii-btpg.onrender.com/users/email-validate",
+                { token }
+              )
+              .then((resp) => setData(resp.data))
+              .catch((error) => setData(error.data));
         }
     }, [token])
     return (

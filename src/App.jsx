@@ -115,6 +115,16 @@ function App() {
 
   return (
     <div className="home">
+      <span
+        style={{
+          position: "absolute",
+          marginLeft: "15.8rem",
+          marginTop: "-2rem",
+          fontWeight: "800",
+        }}
+      >
+        Productos: {filteredProducts.length}
+      </span>
       <div className="search">
         <input
           type="text"
@@ -261,14 +271,25 @@ function App() {
           </div>
         ))}
       </div>
-      <div className="total">
-        <strong>Gran total:</strong>{" "}
-        <span style={{ color: "#53D353", fontWeight: "800" }}>
-          {sum.toLocaleString("es", {
-            style: "currency",
-            currency: "COP",
-          })}
-        </span>
+      <div style={{display: 'flex', flexDirection: 'column', height: '10rem', gap: '1rem'}}>
+        <div className="total">
+          <strong>Gran total:</strong>{" "}
+          <span style={{ color: "#53D353", fontWeight: "800" }}>
+            {sum.toLocaleString("es", {
+              style: "currency",
+              currency: "COP",
+            })}
+          </span>
+        </div>
+        <div className="total">
+          <strong>Gran total:</strong>{" "}
+          <span style={{ color: "#53D353", fontWeight: "800" }}>
+            {sum.toLocaleString("es", {
+              style: "currency",
+              currency: "COP",
+            })}
+          </span>
+        </div>
       </div>
     </div>
   );

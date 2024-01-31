@@ -24,9 +24,7 @@ a:hover {
 }
 
 body {
-  margin: 0;
   display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
 }
@@ -43,12 +41,12 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: #003470;
   cursor: pointer;
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: #003470;
 }
 button:focus,
 button:focus-visible {
@@ -58,12 +56,108 @@ button:focus-visible {
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
-    background-color: #ffffff;
+    background-color: rgb(242, 242, 241);
   }
   a:hover {
     color: #747bff;
   }
   button {
-    background-color: #f9f9f9;
+    margin-top: 0.5rem;
+    background-color: #003470;
+    color: white;
   }
+}
+.home{
+  display: flex;
+  gap: 5rem;
+  margin-top: 4rem;
+}
+.form{
+  display: flex;
+  flex-direction: column;
+}
+label{
+  margin-top: 1rem;
+}
+.cardContainer{
+  display: grid;
+  grid-template-rows: repeat(auto-fit, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+.card {
+  background: #003470;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  overflow: hidden;
+  width: 20rem;
+}
+
+.card__title {
+  color: white;
+  font-weight: bold;
+  padding: 5px 10px;
+  border-bottom: 1px solid rgb(167, 159, 159);
+  font-size: 0.95rem;
+}
+
+.card__data {
+  font-size: 0.8rem;
+  display: flex;
+  justify-content: space-between;
+  border-right: 1px solid rgb(203, 203, 203);
+  border-left: 1px solid rgb(203, 203, 203);
+  border-bottom: 1px solid rgb(203, 203, 203);
+}
+
+.card__right {
+  width: 60%;
+  border-right: 1px solid rgb(203, 203, 203);
+}
+
+.card__left {
+  width: 50%;
+  text-align: end;
+}
+
+.item {
+  padding: 3px 0;
+  background-color: white;
+}
+
+.card__right .item {
+  padding-left: 0.8em;
+}
+
+.card__left .item {
+  padding-right: 0.8em;
+}
+
+.item:nth-child(even) {
+  background: rgb(234, 235, 234);
+}
+
+.total{
+  background-color: #003470;
+  width: 100%;
+  height: 100%;
+  padding: 0.5rem;
+  border-radius: 10px;
+  color: white;
+}
+.search{
+  position: absolute;
+  margin-top: -5rem;
+  margin-left: 25vw;
+}
+.inputSearch{
+  width: 50vw;
+  position: absolute;
+  border-radius: 5px;
+  padding-left: 1rem;
+  border: 1px solid rgba(72, 71, 71, 0.144);
+  background-color: white;
+  height: 5vh;
 }

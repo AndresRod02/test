@@ -111,7 +111,14 @@ function App() {
     (total, product) => total + product.total,
     0
   );
-
+    const incomeEstimated = filteredProducts.reduce(
+      (total, product) =>
+        total +
+        (parseInt(product.stockInitial) + parseInt(product.stockAdded)) *
+          product.price,
+      0
+    );
+    const incomeFuture = incomeEstimated - sum
 
   return (
     <div className="home">
@@ -273,7 +280,7 @@ function App() {
       </div>
       <div style={{display: 'flex', flexDirection: 'column', height: '10rem', gap: '1rem'}}>
         <div className="total">
-          <strong>Gran total:</strong>{" "}
+          <strong>Ingreso recibido</strong>{" "}
           <span style={{ color: "#53D353", fontWeight: "800" }}>
             {sum.toLocaleString("es", {
               style: "currency",
@@ -282,9 +289,18 @@ function App() {
           </span>
         </div>
         <div className="total">
-          <strong>Gran total:</strong>{" "}
+          <strong>Ingreso estimado</strong>{" "}
           <span style={{ color: "#53D353", fontWeight: "800" }}>
-            {sum.toLocaleString("es", {
+            {incomeEstimated.toLocaleString("es", {
+              style: "currency",
+              currency: "COP",
+            })}
+          </span>
+        </div>
+        <div className="total">
+          <strong>Ingreso por recibir</strong>{" "}
+          <span style={{ color: "#53D353", fontWeight: "800" }}>
+            {incomeFuture.toLocaleString("es", {
               style: "currency",
               currency: "COP",
             })}

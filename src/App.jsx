@@ -13,6 +13,7 @@ function App() {
   const [searchTerm, setSearchTerm] = useState("");
   const [editStockInitial, setEditStockInitial] = useState(0);
   const [editPrice, setEditPrice] = useState(0);
+  const [editName, setEditName] = useState("");
 
 
   useEffect(() => {
@@ -50,7 +51,8 @@ function App() {
           code,
           quantity,
           stockInitial: editStockInitial,
-          price: editPrice
+          price: editPrice,
+          name: editName
         };
       } else if (selectedAction === "addProduct") {
         postData = {
@@ -111,14 +113,14 @@ function App() {
     (total, product) => total + product.total,
     0
   );
-    const incomeEstimated = filteredProducts.reduce(
+    const incomeFuture = filteredProducts.reduce(
       (total, product) =>
         total +
-        (parseInt(product.stockInitial) + parseInt(product.stockAdded)) *
+        (parseInt(product.stockCurrent)) *
           product.price,
       0
     );
-    const incomeFuture = incomeEstimated - sum
+    const incomeTotal = incomeFuture + sum
 
   return (
     <div className="home">
@@ -181,6 +183,14 @@ function App() {
               placeholder="Precio"
               value={editPrice}
               onChange={(e) => setEditPrice(e.target.value)}
+              required={true}
+            />
+            <label>Nombre</label>
+            <input
+              type="text"
+              placeholder="Precio"
+              value={editName}
+              onChange={(e) => setEditName(e.target.value)}
               required={true}
             />
           </>
@@ -289,18 +299,18 @@ function App() {
           </span>
         </div>
         <div className="total">
-          <strong>Ingreso estimado</strong>{" "}
+          <strong>Ingreso por recibir</strong>{" "}
           <span style={{ color: "#53D353", fontWeight: "800" }}>
-            {incomeEstimated.toLocaleString("es", {
+            {incomeFuture.toLocaleString("es", {
               style: "currency",
               currency: "COP",
             })}
           </span>
         </div>
         <div className="total">
-          <strong>Ingreso por recibir</strong>{" "}
+          <strong>Total</strong>{" "}
           <span style={{ color: "#53D353", fontWeight: "800" }}>
-            {incomeFuture.toLocaleString("es", {
+            {incomeTotal.toLocaleString("es", {
               style: "currency",
               currency: "COP",
             })}
